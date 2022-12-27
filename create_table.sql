@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS genre_of_singer (
 
 CREATE TABLE IF NOT EXISTS album (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT null,
+	name VARCHAR(40) NOT null UNIQUE,
 	release_yeare INTEGER
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS albums_of_singer (
 
 CREATE TABLE IF NOT EXISTS track (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT null,
+	name VARCHAR(40) NOT null UNIQUE,
 	length NUMERIC NOT null,
 	album_id INTEGER REFERENCES album(id)
 );
