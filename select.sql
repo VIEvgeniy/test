@@ -38,7 +38,8 @@ select name as "Треки не входящие в сботники" from
 where track_id is null
 
 -- 8 исполнителя(-ей), написавшего самый короткий по продолжительности трек (теоретически таких треков может быть несколько);
+select s.pseudonym, t.length from singer s, album a, albums_of_singer aos, track t 
+where aos.singer_id = s.id and aos.album_id = a.id and a.id = t.album_id and t.length = (select min(t2.length) from track t2);
 
 -- 9 название альбомов, содержащих наименьшее количество треков.
-
 
