@@ -42,4 +42,5 @@ select s.pseudonym, t.length from singer s, album a, albums_of_singer aos, track
 where aos.singer_id = s.id and aos.album_id = a.id and a.id = t.album_id and t.length = (select min(t2.length) from track t2);
 
 -- 9 название альбомов, содержащих наименьшее количество треков.
-
+select a.name, count(t) from album a, track t where t.album_id = a.id 
+group by a.name order by count(t) limit 9
